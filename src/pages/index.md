@@ -3,7 +3,7 @@ templateKey: index-page
 title: Disney Holiday Greeting Cards
 image: /img/home-jumbotron.jpg
 bgimage: /img/flavor_wheel.jpg
-buttoncolor: #F92388
+buttoncolor: #F1266777
 heading: Great coffee with a conscience
 subheading: Support sustainable farming while enjoying a cup
 mainpitch:

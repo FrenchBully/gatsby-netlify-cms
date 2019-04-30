@@ -10,4 +10,4 @@ CMS.registerPreviewTemplate('products', ProductPagePreview)
 CMS.registerPreviewTemplate('blog', BlogPostPreview)
 
 // WIDGETS
-CMS.registerWidget("color", ColorWidget.Control);
+CMS.registerWidget('color', ColorWidget.Control);

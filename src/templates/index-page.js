@@ -9,13 +9,14 @@ export const IndexPageTemplate = ({
   bgimage,
   title,
   subheading,
+  buttoncolor
 }) => (
   <div>
     <div
       className="full-width-image margin-top-0"
       style={{
         backgroundImage: `url(${
-          !!image.childImageSharp ? image.childImageSharp.fluid.src : bgimage
+          !!bgimage.childImageSharp ? bgimage.childImageSharp.fluid.src : bgimage
         })`,
         backgroundPosition: `top left`,
         backgroundAttachment: `fixed`,
@@ -37,7 +38,7 @@ export const IndexPageTemplate = ({
             boxShadow:
               'rgb(255, 68, 0) 0.5rem 0px 0px, rgb(255, 68, 0) -0.5rem 0px 0px',
             backgroundColor: 'rgb(255, 68, 0)',
-            color: 'white',
+            color: {buttoncolor},
             lineHeight: '1',
             padding: '0.25em',
           }}
@@ -67,6 +68,7 @@ IndexPageTemplate.propTypes = {
   bgimage: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   title: PropTypes.string,
+  buttoncolor: PropTypes.any,
   heading: PropTypes.string,
   subheading: PropTypes.string,
   mainpitch: PropTypes.object,
@@ -83,6 +85,7 @@ const IndexPage = ({ data }) => {
     <Layout>
       <IndexPageTemplate
         image={frontmatter.image}
+        buttoncolor={frontmatter.buttoncolor}
         bgimage={frontmatter.bgimage}
         title={frontmatter.title}
         heading={frontmatter.heading}
@@ -111,6 +114,13 @@ export const pageQuery = graphql`
       frontmatter {
         title
         image {
+          childImageSharp {
+            fluid(maxWidth: 2048, quality: 100) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+        bgimage {
           childImageSharp {
             fluid(maxWidth: 2048, quality: 100) {
               ...GatsbyImageSharpFluid
